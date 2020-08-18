@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 1.事件调用的方法没有参数 -->
+        <button @click="btn1Click()">按钮1</button>
+        <button @click="btn1Click">按钮1</button>
+        <!-- 2.在事件定义时，写方法时省略了小括号，就是方法本身是需要一个参数的，这个时候，Vue会默认浏览器产生的event事件对象作为参数传入方法 -->
+        <button @click="btn2Click()">按钮2</button>
+        <!-- <button @click="btn1Click">按钮1</button> -->
+        <!-- 3.方法定义时，我们需要用到event对象，还需要其他参数 -->
+        <button @click="btn3Click(abc,$event)">按钮3</button>
+        <!-- 这里如果方法里的参数带引号就是字符串，如果没有就是对象，就会去data里面找相关的数据 ，手动获取浏览器的event对象event前面必须加$不然会报错-->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+                abc: 123
+            },
+            methods: {
+                btn1Click() {
+                    console.log(123);
+                },
+                btn2Click(event) {
+                    console.log('--------', event);
+                    //如果函数需要参数但是没有传入，那么函数的实参为undefinde
+                },
+                btn3Click(abc, event) {
+                    console.log('+++++++', abc, event);
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>

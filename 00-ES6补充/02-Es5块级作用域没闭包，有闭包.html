@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <script>
+        //变量作用域：变量在什么范围内是可用的
+        // {
+        //     var name='lili';
+        //     console.log(name);
+        // }
+        // console.log(name); 
+        //2.没有块级作用域引起的问题:if块级
+        // var func;
+        // if (true) {
+        //     var name = 'lili'
+        //     func = function() {
+        //         console.log(name);
+        //     }
+        //     func();
+        // }
+
+        // name = 'aaa'
+        // func()
+        // console.log(name); //依然可以使用
+        //没有块级作用域引起的问题；for
+        //为什么闭包可以解决问题：函数是一个作用域
+        var btns = document.querySelectorAll('button')
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener('click', function() {
+                console.log('第' + (i + 1) + '个按钮被点击'); //4
+            })
+        }
+        //情况一：Es5没有使用闭包（错误的方式）
+        i = 3 {
+                i = 0
+                btns[i].addEventListener('click', function() {
+                    console.log('第' + (i + 1) + '个按钮被点击');
+                })
+            } {
+                i = 0
+                btns[i].addEventListener('click', function() {
+                    console.log('第' + (i + 1) + '个按钮被点击');
+                })
+            } {
+                i = 0
+                btns[i].addEventListener('click', function() {
+                    console.log('第' + (i + 1) + '个按钮被点击');
+                })
+            } {
+                i = 0
+                btns[i].addEventListener('click', function() {
+                    console.log('第' + (i + 1) + '个按钮被点击');
+                })
+            }
+            //2.情况2 ES5中使用闭包  函数有自己的作用域在调用的时候使用自己的i
+        for (var i = 0; i < btns.length; i++) {
+            (function(i) {
+                btns[i].addEventListener('click', function() {
+                    console.log('第' + (i + 1) + '个按钮被点击');
+                })
+            })(i)
+
+        }
+        i = 4;
+
+        function(i) {
+            //i=0
+            btns[i].addEventListener('click', function() {
+                console.log('第' + (i + 1) + '个按钮被点击');
+            })
+        }
+
+        function(i) {
+            //i=1
+            btns[i].addEventListener('click', function() {
+                console.log('第' + (i + 1) + '个按钮被点击');
+            })
+        }
+
+        function(i) {
+            //i=2
+            btns[i].addEventListener('click', function() {
+                console.log('第' + (i + 1) + '个按钮被点击');
+            })
+        }
+
+        function(i) {
+            //i=3
+            btns[i].addEventListener('click', function() {
+                console.log('第' + (i + 1) + '个按钮被点击');
+            })
+        }
+
+
+        //Es6
+        for (let i = 0; i < btns.length; i++) {
+
+            btns[i].addEventListener('click', function() {
+                console.log('第' + (i + 1) + '个按钮被点击');
+            })
+
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div id="app">
+            <!-- v-if:当条件为false时，包含v-if指令的元素，根本就不会存在dom中 -->
+            <h2 v-if="isShow">{{message}}</h2>
+            <!-- v-show:当条件位false时，v-show只是给我们的元素添加一个行内样式：display：none -->
+            <h2 v-show="isShow">{{message}}</h2>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            const app = new Vue({
+                el: "#app",
+                data: {
+                    message: 'nihao',
+                    isShow: true
+                }
+            })
+        </script>
+    </body>
+
+    </html>
+</body>
+
+</html>

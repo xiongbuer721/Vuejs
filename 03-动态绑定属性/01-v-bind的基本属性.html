@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <img v-bind:src="imgUrl" alt="">
+        <a v-bind:href="ahref">百度一下</a>
+        <!-- 语法糖写法 -->
+        <img :src="imgUrl" alt="">
+        <a :href="ahref">百度一下</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                imgUrl: 'https://bkimg.cdn.bcebos.com/pic/43a7d933c895d143b1a710bb7df082025baf0750?x-bce-process=image/resize,m_lfit,w_268,limit_1/format,f_jpg',
+                ahref: 'http://www.baidu.com'
+            }
+        })
+    </script>
+</body>
+
+</html>
