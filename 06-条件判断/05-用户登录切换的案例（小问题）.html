@@ -8,6 +8,9 @@
 </head>
 
 <body>
+
+    <!-- 存在的bug当用户账号切换到用户邮箱，如果输入框里有内容，那么切换到邮箱时内容默认还是用户账号的内容
+    解决：在input标签里添加key属性。两个输入框的key不同就行 -->
     <div id="app">
         <span v-if="isUser">
             <label for="username">用户账号：</label>

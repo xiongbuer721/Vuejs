@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">{{message}}
+        <cpn></cpn>
+        <cpn></cpn>
+    </div>
+
+    <!-- script标签，类型必须是text/x-template -->
+    <!-- <script type="text/x-template" id="cpn1">
+        <div>
+            <h1>我是标题</h1>
+            <h2>我是内容script</h2>
+        </div>
+    </script> -->
+
+    <!-- 2.template标签 -->
+    <template id="cpn1">
+        <div>
+            <h1>{{title}}</h1>
+        <h2>我是内容1template</h2>
+    </div>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        //1.注册一个全局组件
+
+        //component中的data是函数
+        Vue.component('cpn', {
+            template: '#cpn1',
+            data() {
+                return {
+                    title: 'abc'
+                }
+            }
+        })
+        const app = new Vue({
+            el: '#app', //用于挂载需要管理的数据
+            data: {
+                //定义数据、
+                message: '你好啊，李银河'
+            }
+
+        })
+    </script>
+
+</body>
+
+</html>

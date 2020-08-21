@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <cpn>
+            <!-- 在这里插入的内容就是插槽里的内容 -->
+            <button>按钮</button>
+        </cpn>
+        <cpn>
+            <span>哈哈</span>
+        </cpn>
+        <cpn>
+            <p>嘿嘿嘿</p>
+        </cpn>
+    </div>
+    <template id="cpn">
+        <div>
+            <h2>我是组件</h2>
+
+            <!-- 插槽 -->
+            <slot>
+                <!-- 默认值是button，当在组件里写上内容时，默认值就不会出现 -->
+                <button>按钮</button>
+            </slot>
+            
+        </div>
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        const app = new Vue({
+            el: '#app', //用于挂载需要管理的数据
+            data: {
+                //定义数据、
+                message: '你好啊，李银河'
+            },
+            components: {
+                cpn: {
+                    template: "#cpn",
+                }
+            }
+
+        })
+    </script>
+
+</body>
+
+</html>

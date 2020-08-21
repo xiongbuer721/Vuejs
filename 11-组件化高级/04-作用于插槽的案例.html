@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <cpn></cpn>
+        <cpn>
+            <template slot-scope="slot">
+                <span>{{slot.data.join('-')}}</span>
+            </template>
+        </cpn>
+        <!-- 目的是获得子组件中的pLanguages -->
+        <cpn>
+            <template slot-scope="slot">
+                <span>{{slot.data.join('*')}}</span>
+            </template>
+        </cpn>
+
+    </div>
+    <template id="cpn">
+       <div>
+           <slot :data="pLanguages">
+            <ul>
+                <li v-for="item in pLanguages">{{item}}</li>
+            </ul>
+           </slot>
+       </div>
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        const app = new Vue({
+            el: '#app', //用于挂载需要管理的数据
+            data: {
+                //定义数据、
+                message: '你好啊，李银河'
+            },
+            components: {
+                cpn: {
+                    template: "#cpn",
+                    data() {
+                        return {
+                            pLanguages: ["JavaScript", "C++", "Java", "C#"]
+                        }
+                    }
+
+                },
+
+
+            }
+
+        })
+    </script>
+
+</body>
+
+</html>

@@ -9,21 +9,14 @@
 
 <body>
     <div id="app">
-        <h2 v-if="isShow">
-            <div>abc</div>
-            <div>abc</div>
-            <div>abc</div>
-            <div>abc</div>
-        </h2>
-        <h2 v-else="">isShow为false时显示我</h2>
+        <input type="text" v-model="message">{{message}}</input>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         const app = new Vue({
-            el: '#app',
+            el: "#app",
             data: {
-                message: 'nih',
-                isShow: false
+                message: "你好"
             }
         })
     </script>

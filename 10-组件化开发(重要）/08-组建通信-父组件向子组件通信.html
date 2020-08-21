@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <cpn v-bind:cmovies="movies" :cmessage="message"></cpn>
+    </div>
+    <template id="cpn">
+        <div>
+             <ul>
+                <li v-for="item in cmovies">{{item}}</li>
+            </ul>
+            <h2>{{cmessage}}</h2>
+        </div>
+    
+   </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        const cpn = {
+            template: "#cpn",
+            //父传子 props
+            props: ["cmovies", "cmessage"],
+            data() {
+                return {}
+            }
+        }
+        const app = new Vue({
+            el: '#app', //用于挂载需要管理的数据
+            data: {
+                //定义数据、
+                movies: ["海贼王", "海王"],
+                message: '你好啊，李银河'
+            },
+            components: {
+                cpn
+            }
+
+        })
+    </script>
+
+</body>
+
+</html>
